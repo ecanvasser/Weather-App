@@ -16,7 +16,6 @@ const Weather = () => {
     weatherObj["temp_max"] = data.main.temp_max;
     weatherObj["temp_min"] = data.main.temp_min;
     weatherObj["visible"] = data.weather[0].description;
-    console.log(weatherObj);
   };
 
   return { getData };
@@ -27,16 +26,31 @@ const Display = () => {
         document.getElementById('city').textContent = name;
     };
 
-    const setStats = () => {
-        
+    const setStats = (obj) => {
+        document.getElementById('temp').textContent = obj['temp'];
+        document.getElementById('minmax').textContent = `${obj["temp_min"]} / ${obj['temp_max']}`;
+        document.getElementById('vis').textContent = obj['visible'];
     }
 
-    return { setTitle };
+    const build = (name, obj) => {
+        setTitle(name);
+        setStats(obj);
+    }
+
+    return { build };
 };
 
-document.getElementById('submit').addEventListener('click', (e) => {
+const checkWeather = async () => {
     let city = document.getElementById('search').value;
     let display = Display();
-    display.setTitle(city);
+    let weather = Weather();
+
+    let pullWeather = await weather.getData(city);
+    let setPage = await display.build(city, weatherObj);
+    console.log(weatherObj);
+}
+
+document.getElementById('submit').addEventListener('click', (e) => {
+    checkWeather();
     e.preventDefault();
 })
