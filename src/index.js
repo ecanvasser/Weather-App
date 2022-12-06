@@ -13,8 +13,14 @@ const Weather = () => {
     );
     let data = await response.json();
     weatherObj["temp"] = data.main.temp;
+    weatherObj["temp_max"] = data.main.temp_max;
+    weatherObj["temp_min"] = data.main.temp_min;
+    weatherObj["visible"] = data.weather[0].description;
     console.log(weatherObj);
   };
 
   return { getData };
 };
+
+let test = Weather();
+test.getData("New York");
