@@ -1,10 +1,10 @@
 body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(17 24 39);
-    height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(17 24 39);
+  height: 100vh;
 }
 
 main {
@@ -18,18 +18,18 @@ main {
 }
 
 label {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 #stats {
-    display: flex;
-    gap: 15px;
-    justify-content: center;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
 }
 
 #city {
-    font-size: 25px;
-    margin-top: 20px;
+  font-size: 25px;
+  margin-top: 20px;
 }
