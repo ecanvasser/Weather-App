@@ -22,4 +22,21 @@ const Weather = () => {
   return { getData };
 };
 
+const Display = () => {
+    const setTitle = (name) => {
+        document.getElementById('city').textContent = name;
+    };
 
+    const setStats = () => {
+        
+    }
+
+    return { setTitle };
+};
+
+document.getElementById('submit').addEventListener('click', (e) => {
+    let city = document.getElementById('search').value;
+    let display = Display();
+    display.setTitle(city);
+    e.preventDefault();
+})
