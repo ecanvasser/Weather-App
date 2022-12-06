@@ -1,8 +1,8 @@
 import "./style.css";
 
-const Weather = () => {
-  var weatherObj = {};
+var weatherObj = {};
 
+const Weather = () => {
   const getData = async (city) => {
     for (key in weatherObj) {
       delete weatherObj[key];
@@ -22,5 +22,4 @@ const Weather = () => {
   return { getData };
 };
 
-let test = Weather();
-test.getData("New York");
+
