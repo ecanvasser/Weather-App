@@ -8,7 +8,7 @@ const Weather = () => {
 
     let response = await fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=6461858adafc20c62e982c70265b6260&units=imperial`,
-      {mode: 'cors'}
+      { mode: "cors" }
     );
     let data = await response.json();
     weatherObj["temp"] = data.main.temp;
@@ -34,30 +34,33 @@ const Display = () => {
   };
 
   const setGIF = async () => {
-    var img = document.querySelector('img');
+    var img = document.querySelector("img");
     let param;
 
-   if (weatherObj["visible"].includes('cloud')) {
-    param = 'clouds';
-   } else if (weatherObj["visible"].includes('mist')) {
-    param = 'mist';
-   } else if (weatherObj["visible"].includes('fog')) {
-    param = 'fog';
-   } else if (weatherObj["visible"].includes('rain')) {
-    param = 'rain';
-   } else {
-    param = 'sunny';
-   }
+    weatherObj["visible"].includes("cloud")
+      ? (param = "clouds")
+      : weatherObj["visible"].includes("mist")
+      ? (param = "mist")
+      : weatherObj["visible"].includes("fog")
+      ? (param = "fog")
+      : weatherObj["visible"].includes("rain")
+      ? (param = "rain")
+      : weatherObj["visible"].includes("thunder")
+      ? (param = "thunder")
+      : (param = "sunny");
 
-   let response = await fetch(`https://api.giphy.com/v1/gifs/translate?api_key=IOUD8smzD9Ir16zebOKAYlxMWSOjLkHt&s=${param}`, {mode: 'cors'})
-   let data = await response.json();
-   img.src = data.data.images.original.url;
-  }
+    let response = await fetch(
+      `https://api.giphy.com/v1/gifs/translate?api_key=IOUD8smzD9Ir16zebOKAYlxMWSOjLkHt&s=${param}`,
+      { mode: "cors" }
+    );
+    let data = await response.json();
+    img.src = data.data.images.original.url;
+  };
 
-  const build = (name, obj) => {
+  const build = async (name, obj) => {
+    await setGIF();
     setTitle(name);
     setStats(obj);
-    setGIF();
   };
 
   return { build };
