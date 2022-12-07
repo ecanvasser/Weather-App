@@ -1,3 +1,18 @@
+@font-face {
+    font-family: 'Title';
+    src: url('./Roboto-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'City';
+    src: url('./Roboto-Medium.ttf');
+}
+
+@font-face {
+    font-family: 'Stats';
+    src: url('./Roboto-Regular.ttf');
+}
+
 body {
   display: flex;
   flex-direction: column;
@@ -42,9 +57,11 @@ img {
 #city {
   font-size: 25px;
   margin-top: 20px;
+  font-family: 'City';
 }
 
 #title {
+  font-family: 'Title';
   font-size: 32px;
 }
 
@@ -58,4 +75,9 @@ img {
 .stat-title {
   color: #9ca3af;
   font-size: 12px;
+  font-family: 'Stats';
+}
+
+#temp, #minmax, #vis {
+  font-family: 'Stats';
 }
