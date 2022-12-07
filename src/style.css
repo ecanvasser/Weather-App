@@ -29,6 +29,10 @@ input {
   padding: 5px;
 }
 
+img {
+    margin: 1.5rem 0;
+}
+
 #stats {
   display: flex;
   gap: 25px;
