@@ -4,9 +4,7 @@ var weatherObj = {};
 
 const Weather = () => {
   const getData = async (city) => {
-    for (key in weatherObj) {
-      delete weatherObj[key];
-    }
+    weatherObj = Object.create({});
 
     let response = await fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=6461858adafc20c62e982c70265b6260&units=imperial`
@@ -49,7 +47,6 @@ const checkWeather = async () => {
 
   let pullWeather = await weather.getData(city);
   let setPage = await display.build(city, weatherObj);
-  console.log(weatherObj);
 };
 
 document.getElementById("submit").addEventListener("click", (e) => {
